@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Data.Entity.Infrastructure.Design.Executor;
 
 namespace Test
 {
@@ -44,7 +45,7 @@ namespace Test
                 {
                     DbConn.GetConn();
 
-                    string query = $"SELECT * FROM tbl_Products WHERE masanpham = '{maSP}'";
+                    string query = $"SELECT * FROM tbl_Products WHERE masanpham = N'{maSP}'";
                     SqlDataReader reader = DbConn.Reader(query);
                     if (reader.HasRows)
                     {
@@ -187,7 +188,7 @@ namespace Test
         private bool KiemTraTrungMa(string MaSP)
         {
             DbConn.GetConn();
-            string query = $"SELECT * FROM tbl_Products WHERE masanpham = '{MaSP}'";
+            string query = $"SELECT * FROM tbl_Products WHERE masanpham = N'{MaSP}'";
             SqlDataReader reader = DbConn.Reader(query);
             if (reader.HasRows)
             {
@@ -223,6 +224,12 @@ namespace Test
                 string GiaBan = txtGiaBan.Text.Trim();
                 string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yyyy");
 
+                if(MaSP == "")
+                {
+                    MessageBox.Show("Mã SP không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
                 if (KiemTraTrungMa(MaSP) == true){
                     MessageBox.Show("Mã sản phẩm bị trùng!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -230,7 +237,7 @@ namespace Test
 
                 DbConn.GetConn();
                 string query = $"INSERT INTO tbl_Products (masanpham,tensanpham,thuonghieu,mausac,dungluong,soluong,giaban,ngaycapnhat)" +
-                               $" VALUES ('{MaSP}','{TenSP}','{Hang}','{MauSac}','{DungLuong}','{SoLuong}','{GiaBan}','{NgayCapNhat}')";
+                               $" VALUES (N'{MaSP}',N'{TenSP}',N'{Hang}',N'{MauSac}',N'{DungLuong}',N'{SoLuong}',N'{GiaBan}',N'{NgayCapNhat}')";
                 int check = DbConn.Command(query);
                 if (check > 0)
                 {
@@ -263,13 +270,18 @@ namespace Test
 
             try
             {
-                if(KiemTraTrungMa(MaSP) == true)
+                if (MaSP == "")
+                {
+                    MessageBox.Show("Mã SP không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                if (KiemTraTrungMa(MaSP) == true)
                 {
                     DialogResult result = MessageBox.Show($"Bạn thật sự muốn xóa sản phẩm có mã {MaSP}", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         DbConn.GetConn();
-                        string query = $"DELETE FROM tbl_Products WHERE masanpham = '{MaSP}'";
+                        string query = $"DELETE FROM tbl_Products WHERE masanpham = N'{MaSP}'";
                         int check = DbConn.Command(query);
                         if (check > 0)
                         {
@@ -294,6 +306,59 @@ namespace Test
                 }
             }
             catch(Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            string MaSP = txtMaSP.Text.Trim();
+            string TenSP = txtTenSP.Text.Trim();
+            string Hang = txtHang.Text.Trim();
+            string MauSac = txtMauSac.Text.Trim();
+            string DungLuong = txtDungLuong.Text.Trim();
+            string SoLuong = txtSoLuong.Text.Trim();
+            string GiaBan = txtGiaBan.Text.Trim();
+            string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yyyy");
+            try
+            {
+                if (MaSP == "")
+                {
+                    MessageBox.Show("Mã SP không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                if (KiemTraTrungMa(MaSP) == true)
+                {
+                    DialogResult result = MessageBox.Show($"Bạn thật sự muốn đổi thông tin của sản phẩm có mã {MaSP}", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        DbConn.GetConn();
+                        string query = $"UPDATE tbl_Products SET tensanpham = N'{TenSP}', thuonghieu = N'{Hang}'," +
+                                       $" mausac = N'{MauSac}', dungluong = N'{DungLuong}', soluong = N'{SoLuong}'," +
+                                       $" giaban = N'{GiaBan}', ngaycapnhat = N'{NgayCapNhat}' WHERE masanpham = N'{MaSP}'";
+
+                        int check = DbConn.Command(query);
+                        if (check > 0)
+                        {
+                            MessageBox.Show("Sửa thông tin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ResetTextBox();
+                            LoadList();
+                            DbConn.CloseConn();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sửa thông tin KHÔNG thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadList();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Mã SP không tồn tại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadList();
+                }
+            }catch(Exception ex)
             {
                 MessageBox.Show("Lỗi: " + ex.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

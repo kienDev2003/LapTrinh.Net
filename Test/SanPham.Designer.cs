@@ -67,6 +67,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtTkMaSP = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -74,6 +76,8 @@
             this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -101,10 +105,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.btnReset);
-            this.groupBox4.Controls.Add(this.btnXoa);
-            this.groupBox4.Controls.Add(this.btnSua);
-            this.groupBox4.Controls.Add(this.btnThem);
+            this.groupBox4.Controls.Add(this.panel4);
             this.groupBox4.Controls.Add(this.txtGiaBan);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.txtSoLuong);
@@ -126,11 +127,11 @@
             this.groupBox4.Size = new System.Drawing.Size(280, 406);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Chức năng:";
+            this.groupBox4.Text = "Thông tin sản phẩm:";
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(164, 363);
+            this.btnReset.Location = new System.Drawing.Point(161, 71);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 28);
             this.btnReset.TabIndex = 10;
@@ -140,7 +141,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(63, 363);
+            this.btnXoa.Location = new System.Drawing.Point(60, 71);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 28);
             this.btnXoa.TabIndex = 9;
@@ -150,16 +151,17 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(164, 321);
+            this.btnSua.Location = new System.Drawing.Point(161, 29);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 28);
             this.btnSua.TabIndex = 8;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(63, 321);
+            this.btnThem.Location = new System.Drawing.Point(60, 29);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 28);
             this.btnThem.TabIndex = 7;
@@ -429,6 +431,29 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã SP:";
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.groupBox5);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(3, 280);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(274, 123);
+            this.panel4.TabIndex = 15;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnSua);
+            this.groupBox5.Controls.Add(this.btnThem);
+            this.groupBox5.Controls.Add(this.btnXoa);
+            this.groupBox5.Controls.Add(this.btnReset);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Location = new System.Drawing.Point(0, 0);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(274, 123);
+            this.groupBox5.TabIndex = 0;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Chức năng:";
+            // 
             // SanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -449,6 +474,8 @@
             this.panel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -494,5 +521,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.GroupBox groupBox5;
     }
 }
