@@ -1,0 +1,30 @@
+E:\Build_Project_Dev\BTL_C#\Test.exe.config
+E:\Build_Project_Dev\BTL_C#\Test.exe
+E:\Build_Project_Dev\BTL_C#\Test.pdb
+E:\Project_Dev\BTL_LapTrinhC#\Test\obj\Debug\BTL_LapTrinhC#.csproj.AssemblyReference.cache
+E:\Project_Dev\BTL_LapTrinhC#\Test\obj\Debug\Test.Home.resources
+E:\Project_Dev\BTL_LapTrinhC#\Test\obj\Debug\Test.Login.resources
+E:\Project_Dev\BTL_LapTrinhC#\Test\obj\Debug\Test.Properties.Resources.resources
+E:\Project_Dev\BTL_LapTrinhC#\Test\obj\Debug\Test.ResetPassword.resources
+E:\Project_Dev\BTL_LapTrinhC#\Test\obj\Debug\Test.SanPham.resources
+E:\Project_Dev\BTL_LapTrinhC#\Test\obj\Debug\Test.XuatHang.resources
+E:\Project_Dev\BTL_LapTrinhC#\Test\obj\Debug\BTL_LapTrinhC#.csproj.GenerateResource.cache
+E:\Project_Dev\BTL_LapTrinhC#\Test\obj\Debug\BTL_LapTrinhC#.csproj.CoreCompileInputs.cache
+E:\Project_Dev\BTL_LapTrinhC#\Test\obj\Debug\Test.exe
+E:\Project_Dev\BTL_LapTrinhC#\Test\obj\Debug\Test.pdb
+E:\Project_Dev\BTL_LapTrinhC#\Test\obj\Debug\BTL_LapTrinhC#.csproj.CopyComplete
+C:\Users\Administrator\Desktop\New folder\BTL_LapTrinh.NET\Test\obj\Debug\BTL_LapTrinhC#.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\New folder\BTL_LapTrinh.NET\Test\obj\Debug\Test.Home.resources
+C:\Users\Administrator\Desktop\New folder\BTL_LapTrinh.NET\Test\obj\Debug\Test.Login.resources
+C:\Users\Administrator\Desktop\New folder\BTL_LapTrinh.NET\Test\obj\Debug\Test.Properties.Resources.resources
+C:\Users\Administrator\Desktop\New folder\BTL_LapTrinh.NET\Test\obj\Debug\Test.ResetPassword.resources
+C:\Users\Administrator\Desktop\New folder\BTL_LapTrinh.NET\Test\obj\Debug\BTL_LapTrinhC#.csproj.GenerateResource.cache
+C:\Users\Administrator\Desktop\New folder\BTL_LapTrinh.NET\Test\obj\Debug\BTL_LapTrinhC#.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\New folder\BTL_LapTrinh.NET\Test\obj\Debug\Test.exe
+C:\Users\Administrator\Desktop\New folder\BTL_LapTrinh.NET\Test\obj\Debug\Test.pdb
+C:\Users\Administrator\Desktop\Build_Project_Dev\BTL_C#\Test.exe.config
+C:\Users\Administrator\Desktop\Build_Project_Dev\BTL_C#\Test.exe
+C:\Users\Administrator\Desktop\Build_Project_Dev\BTL_C#\Test.pdb
+C:\Users\Administrator\Desktop\New folder\BTL_LapTrinh.NET\Test\obj\Debug\BTL_LapTrinhC#.csproj.CopyComplete
+C:\Users\Administrator\Desktop\New folder\BTL_LapTrinh.NET\Test\obj\Debug\Test.SanPham.resources
+C:\Users\Administrator\Desktop\New folder\BTL_LapTrinh.NET\Test\obj\Debug\Test.XuatHang.resources
