@@ -59,3 +59,7 @@ D:\.Net\LapTrinh.Net\Test\obj\Debug\BTL_LapTrinhC#.csproj.CoreCompileInputs.cach
 D:\.Net\LapTrinh.Net\Test\obj\Debug\BTL_LapTrinhC#.csproj.CopyComplete
 D:\.Net\LapTrinh.Net\Test\obj\Debug\Test.exe
 D:\.Net\LapTrinh.Net\Test\obj\Debug\Test.pdb
+D:\.Net\LapTrinh.Net\Test\obj\Debug\Test.NhaCungCap.resources
+D:\.Net\LapTrinh.Net\Test\obj\Debug\Test.NhanVien.resources
+D:\.Net\LapTrinh.Net\Test\obj\Debug\Test.NhapHang.resources
+D:\.Net\LapTrinh.Net\Test\obj\Debug\Test.ThongKe.resources

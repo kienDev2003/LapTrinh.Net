@@ -148,5 +148,25 @@ namespace Test
         {
             this.Close();
         }
+
+        private void lb_NhapHang_Click(object sender, EventArgs e)
+        {
+            ShowFromCon(new NhapHang());
+        }
+
+        private void lb_NhaCungCap_Click(object sender, EventArgs e)
+        {
+            ShowFromCon(new NhaCungCap());
+        }
+
+        private void lb_NhanVien_Click(object sender, EventArgs e)
+        {
+            ShowFromCon(new NhanVien());
+        }
+
+        private void lb_ThongKe_Click(object sender, EventArgs e)
+        {
+            ShowFromCon(new ThongKe());
+        }
     }
 }

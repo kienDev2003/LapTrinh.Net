@@ -34,7 +34,6 @@
             this.lb_ChucVu = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lb_Name = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.footer = new System.Windows.Forms.Panel();
             this.content_left = new System.Windows.Forms.Panel();
@@ -44,9 +43,11 @@
             this.lb_NhaCungCap = new System.Windows.Forms.Label();
             this.lb_NhapHang = new System.Windows.Forms.Label();
             this.lb_XuatHang = new System.Windows.Forms.Label();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.lb_SanPham = new System.Windows.Forms.Label();
             this.lb_Home = new System.Windows.Forms.Label();
+            this.content = new System.Windows.Forms.Panel();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -54,11 +55,11 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.content = new System.Windows.Forms.Panel();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.header.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.content_left.SuspendLayout();
+            this.content.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -67,8 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.content.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // header
@@ -133,16 +133,6 @@
             this.lb_Name.Size = new System.Drawing.Size(68, 25);
             this.lb_Name.TabIndex = 2;
             this.lb_Name.Text = "Admin";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(408, 14);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(46, 53);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -218,6 +208,7 @@
             this.lb_ThongKe.Size = new System.Drawing.Size(89, 22);
             this.lb_ThongKe.TabIndex = 13;
             this.lb_ThongKe.Text = "Thống Kê";
+            this.lb_ThongKe.Click += new System.EventHandler(this.lb_ThongKe_Click);
             this.lb_ThongKe.MouseEnter += new System.EventHandler(this.lb_ThongKe_MouseEnter);
             this.lb_ThongKe.MouseLeave += new System.EventHandler(this.lb_ThongKe_MouseLeave);
             // 
@@ -233,6 +224,7 @@
             this.lb_NhanVien.Size = new System.Drawing.Size(94, 22);
             this.lb_NhanVien.TabIndex = 12;
             this.lb_NhanVien.Text = "Nhân Viên";
+            this.lb_NhanVien.Click += new System.EventHandler(this.lb_NhanVien_Click);
             this.lb_NhanVien.MouseEnter += new System.EventHandler(this.lb_NhanVien_MouseEnter);
             this.lb_NhanVien.MouseLeave += new System.EventHandler(this.lb_NhanVien_MouseLeave);
             // 
@@ -248,6 +240,7 @@
             this.lb_NhaCungCap.Size = new System.Drawing.Size(129, 22);
             this.lb_NhaCungCap.TabIndex = 11;
             this.lb_NhaCungCap.Text = "Nhà Cung Cấp";
+            this.lb_NhaCungCap.Click += new System.EventHandler(this.lb_NhaCungCap_Click);
             this.lb_NhaCungCap.MouseEnter += new System.EventHandler(this.lb_NhaCungCap_MouseEnter);
             this.lb_NhaCungCap.MouseLeave += new System.EventHandler(this.lb_NhaCungCap_MouseLeave);
             // 
@@ -263,6 +256,7 @@
             this.lb_NhapHang.Size = new System.Drawing.Size(101, 22);
             this.lb_NhapHang.TabIndex = 10;
             this.lb_NhapHang.Text = "Nhập Hàng";
+            this.lb_NhapHang.Click += new System.EventHandler(this.lb_NhapHang_Click);
             this.lb_NhapHang.MouseEnter += new System.EventHandler(this.lb_NhapHang_MouseEnter);
             this.lb_NhapHang.MouseLeave += new System.EventHandler(this.lb_NhapHang_MouseLeave);
             // 
@@ -281,18 +275,6 @@
             this.lb_XuatHang.Click += new System.EventHandler(this.lb_XuatHang_Click);
             this.lb_XuatHang.MouseEnter += new System.EventHandler(this.lb_XuatHang_MouseEnter);
             this.lb_XuatHang.MouseLeave += new System.EventHandler(this.lb_XuatHang_MouseLeave);
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox9.Image = global::Test.Properties.Resources.nhaphang;
-            this.pictureBox9.Location = new System.Drawing.Point(45, 229);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(38, 34);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 8;
-            this.pictureBox9.TabStop = false;
             // 
             // lb_SanPham
             // 
@@ -325,6 +307,39 @@
             this.lb_Home.Click += new System.EventHandler(this.lb_Home_Click);
             this.lb_Home.MouseEnter += new System.EventHandler(this.lb_Home_MouseEnter);
             this.lb_Home.MouseLeave += new System.EventHandler(this.lb_Home_MouseLeave);
+            // 
+            // content
+            // 
+            this.content.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.content.Controls.Add(this.pictureBox10);
+            this.content.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.content.Location = new System.Drawing.Point(238, 80);
+            this.content.Name = "content";
+            this.content.Size = new System.Drawing.Size(1112, 531);
+            this.content.TabIndex = 3;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox10.Image = global::Test.Properties.Resources.cuahang;
+            this.pictureBox10.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(1112, 531);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 0;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox9.Image = global::Test.Properties.Resources.nhaphang;
+            this.pictureBox9.Location = new System.Drawing.Point(45, 229);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(38, 34);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 8;
+            this.pictureBox9.TabStop = false;
             // 
             // pictureBox8
             // 
@@ -406,26 +421,15 @@
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
             // 
-            // content
+            // pictureBox1
             // 
-            this.content.BackColor = System.Drawing.Color.MediumSpringGreen;
-            this.content.Controls.Add(this.pictureBox10);
-            this.content.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.content.Location = new System.Drawing.Point(238, 80);
-            this.content.Name = "content";
-            this.content.Size = new System.Drawing.Size(1112, 531);
-            this.content.TabIndex = 3;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox10.Image = global::Test.Properties.Resources.cuahang;
-            this.pictureBox10.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(1112, 531);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox10.TabIndex = 0;
-            this.pictureBox10.TabStop = false;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(408, 14);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(46, 53);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // Home
             // 
@@ -443,9 +447,10 @@
             this.TopMost = true;
             this.header.ResumeLayout(false);
             this.header.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.content_left.ResumeLayout(false);
             this.content_left.PerformLayout();
+            this.content.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
@@ -454,8 +459,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.content.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
