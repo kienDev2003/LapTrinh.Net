@@ -138,6 +138,13 @@ namespace Test
         private void SanPham_Load(object sender, EventArgs e)
         {
             LoadList();
+            Home homeForm = Application.OpenForms["Home"] as Home;
+            if (homeForm != null && homeForm.lb_ChucVu.Text != "Quản Lý")
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
 
         private void LoadList()
@@ -216,7 +223,7 @@ namespace Test
         }
 
         private void btnThem_Click(object sender, EventArgs e)
-        {
+        {           
             try
             {
                 string MaSP = txtMaSP.Text.Trim();
@@ -228,12 +235,11 @@ namespace Test
                 string GiaBan = txtGiaBan.Text.Trim();
                 string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yyyy");
 
-                if(MaSP == "")
+                if (MaSP == "" || TenSP == "" || Hang == "" || MauSac == "" || DungLuong == "" || GiaBan == "")
                 {
-                    MessageBox.Show("Mã SP không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-
                 if (KiemTraTrungMa(MaSP) == true){
                     MessageBox.Show("Mã sản phẩm bị trùng!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -327,14 +333,14 @@ namespace Test
             string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yyyy");
             try
             {
-                if (MaSP == "")
+                if (MaSP == "" || TenSP == "" || Hang == "" || MauSac == "" || DungLuong == "" || GiaBan == "")
                 {
-                    MessageBox.Show("Mã SP không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 if (KiemTraTrungMa(MaSP) == true)
                 {
-                    DialogResult result = MessageBox.Show($"Bạn thật sự muốn đổi thông tin của sản phẩm có mã {MaSP}", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show($"Bạn thật sự muốn sửa thông tin của sản phẩm có mã {MaSP}", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         DbConn.GetConn();

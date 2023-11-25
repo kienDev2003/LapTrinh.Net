@@ -63,3 +63,7 @@ D:\.Net\LapTrinh.Net\Test\obj\Debug\Test.NhaCungCap.resources
 D:\.Net\LapTrinh.Net\Test\obj\Debug\Test.NhanVien.resources
 D:\.Net\LapTrinh.Net\Test\obj\Debug\Test.NhapHang.resources
 D:\.Net\LapTrinh.Net\Test\obj\Debug\Test.ThongKe.resources
+E:\Project_Dev\BTL_LapTrinh.Net\LapTrinh.Net\Test\obj\Debug\Test.NhaCungCap.resources
+E:\Project_Dev\BTL_LapTrinh.Net\LapTrinh.Net\Test\obj\Debug\Test.NhanVien.resources
+E:\Project_Dev\BTL_LapTrinh.Net\LapTrinh.Net\Test\obj\Debug\Test.NhapHang.resources
+E:\Project_Dev\BTL_LapTrinh.Net\LapTrinh.Net\Test\obj\Debug\Test.ThongKe.resources

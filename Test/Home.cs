@@ -42,6 +42,12 @@ namespace Test
             lb_Name.Text = tenNv;
             lb_ChucVu.Text = chucVu;
             lb_NgayGio.Text = DateTime.Now.ToString("ddd--dd/MM/yyyy", new CultureInfo("vi-VN"));
+            if(chucVu == "Nhân Viên")
+            {
+                lb_NhaCungCap.Enabled = false;
+                lb_NhanVien.Enabled = false;
+                lb_ThongKe.Enabled = false;
+            }
         }
 
         private void lb_SanPham_Click(object sender, EventArgs e)

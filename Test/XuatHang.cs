@@ -14,7 +14,6 @@ namespace Test
     public partial class XuatHang : Form
     {
         DBConnection DbConn = new DBConnection();
-
         public XuatHang()
         {
             InitializeComponent();
@@ -199,7 +198,7 @@ namespace Test
         {
             txtMaDX.Text = "";
             txtTenKH.Text = "";
-            cboLoaiSP.SelectedIndex = 0;
+            cboLoaiSP.Text = "--Chọn SP--";
             txtSDT.Text = "";
             txtAddr.Text = "";
             txtSLSP.Text = "";
@@ -224,6 +223,13 @@ namespace Test
         {
             LoadList();
             LoadDataToCbo();
+            Home homeForm = Application.OpenForms["Home"] as Home;
+            if (homeForm != null && homeForm.lb_ChucVu.Text != "Quản Lý")
+            {
+                cboLoaiSP.DropDownStyle = ComboBoxStyle.DropDownList;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -243,7 +249,6 @@ namespace Test
                 string SĐT = lvi.SubItems[3].Text;
                 string DiaCHi = lvi.SubItems[4].Text;
                 string SLSP = lvi.SubItems[5].Text;
-                string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yyyy");
 
                 txtMaDX.Text = MaDX;
                 txtTenKH.Text = TenKH;
@@ -267,7 +272,11 @@ namespace Test
                 string SLSP = txtSLSP.Text.Trim();
                 string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yyyy");
 
-
+                if (MaDX == "" || TenKH == "" || LoaiSP == "" || SĐT == "" || DiaChi == "" || SLSP == "")
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
                 if (KiemTraTrungMa(MaDX) == false)
                 {
                     DbConn.GetConn();
@@ -292,6 +301,104 @@ namespace Test
                 }
             }
             catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            string MaDX = txtMaDX.Text.Trim();
+            string TenKH = txtTenKH.Text.Trim();
+            string LoaiSP = cboLoaiSP.Text.Trim();
+            string SĐT = txtSDT.Text.Trim();
+            string DiaChi = txtAddr.Text.Trim();
+            string SLSP = txtSLSP.Text.Trim();
+            string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yyyy");
+
+            try
+            {
+                if (MaDX == "" || TenKH == "" || LoaiSP == "" || SĐT == "" || DiaChi == "" || SLSP == "")
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                if (KiemTraTrungMa(MaDX) == true)
+                {
+                    DialogResult result = MessageBox.Show($"Bạn thật sự muốn sửa thông tin của đơn xuất có mã {MaDX}", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        DbConn.GetConn();
+                        string query = $"UPDATE tbl_DonXuat SET tenkhachhang = N'{TenKH}', sodienthoai = N'{SĐT}'," +
+                                           $" diachi = N'{DiaChi}', loaisanpham = N'{LoaiSP}', soluongsanpham = N'{SLSP}'," +
+                                           $" ngaycapnhat = N'{NgayCapNhat}' WHERE madonhang = N'{MaDX}'";
+                        int check = DbConn.Command(query);
+                        if (check > 0)
+                        {
+                            MessageBox.Show("Sửa đơn xuất hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DbConn.CloseConn();
+                            LoadList();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sửa đơn xuất hàng KHÔNG thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DbConn.CloseConn();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Mã đơn xuất bị trùng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            string MaDX = txtMaDX.Text.Trim();
+
+            try
+            {
+                if (MaDX == "")
+                {
+                    MessageBox.Show("Mã ĐX không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                if (KiemTraTrungMa(MaDX) == true)
+                {
+                    DialogResult result = MessageBox.Show($"Bạn thật sự muốn xóa sản phẩm có mã {MaDX}", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        DbConn.GetConn();
+                        string query = $"DELETE FROM tbl_DonXuat WHERE madonhang = N'{MaDX}'";
+                        int check = DbConn.Command(query);
+                        if (check > 0)
+                        {
+                            MessageBox.Show("Xóa đơn xuất thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadList();
+                            ResetTextBox();
+                            DbConn.CloseConn();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xóa đơn xuất KHÔNG thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadList();
+                            DbConn.CloseConn();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Mã đơn xuất không tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ResetTextBox();
+                    LoadList();
+                }
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show("Lỗi: " + ex.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

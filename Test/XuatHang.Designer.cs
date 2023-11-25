@@ -31,9 +31,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
-            this.cboLoaiSP = new System.Windows.Forms.ComboBox();
             this.btnXuatDon = new System.Windows.Forms.Button();
+            this.cboLoaiSP = new System.Windows.Forms.ComboBox();
             this.txtSLSP = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtAddr = new System.Windows.Forms.TextBox();
@@ -62,19 +66,15 @@
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.txtTkMaDX = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -124,6 +124,51 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin đơn xuất:";
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.groupBox5);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(3, 287);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(284, 115);
+            this.panel4.TabIndex = 20;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnReset);
+            this.groupBox5.Controls.Add(this.btnXoa);
+            this.groupBox5.Controls.Add(this.btnSua);
+            this.groupBox5.Controls.Add(this.btnXuatDon);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Location = new System.Drawing.Point(0, 0);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(284, 115);
+            this.groupBox5.TabIndex = 0;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Chức năng:";
+            // 
+            // btnReset
+            // 
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Location = new System.Drawing.Point(158, 76);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(108, 28);
+            this.btnReset.TabIndex = 22;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.Location = new System.Drawing.Point(24, 76);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(108, 28);
+            this.btnXoa.TabIndex = 21;
+            this.btnXoa.Text = "Xóa đơn";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
             // btnSua
             // 
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -133,15 +178,7 @@
             this.btnSua.TabIndex = 20;
             this.btnSua.Text = "Sửa đơn";
             this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // cboLoaiSP
-            // 
-            this.cboLoaiSP.FormattingEnabled = true;
-            this.cboLoaiSP.Location = new System.Drawing.Point(96, 114);
-            this.cboLoaiSP.Name = "cboLoaiSP";
-            this.cboLoaiSP.Size = new System.Drawing.Size(173, 24);
-            this.cboLoaiSP.TabIndex = 2;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXuatDon
             // 
@@ -153,6 +190,16 @@
             this.btnXuatDon.Text = "Xuất đơn";
             this.btnXuatDon.UseVisualStyleBackColor = true;
             this.btnXuatDon.Click += new System.EventHandler(this.btnXuatDon_Click);
+            // 
+            // cboLoaiSP
+            // 
+            this.cboLoaiSP.FormattingEnabled = true;
+            this.cboLoaiSP.Items.AddRange(new object[] {
+            "--Chọn SP--"});
+            this.cboLoaiSP.Location = new System.Drawing.Point(96, 114);
+            this.cboLoaiSP.Name = "cboLoaiSP";
+            this.cboLoaiSP.Size = new System.Drawing.Size(173, 24);
+            this.cboLoaiSP.TabIndex = 2;
             // 
             // txtSLSP
             // 
@@ -397,49 +444,6 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Mã ĐX:";
             // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.groupBox5);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(3, 287);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(284, 115);
-            this.panel4.TabIndex = 20;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.btnReset);
-            this.groupBox5.Controls.Add(this.btnXoa);
-            this.groupBox5.Controls.Add(this.btnSua);
-            this.groupBox5.Controls.Add(this.btnXuatDon);
-            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(0, 0);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(284, 115);
-            this.groupBox5.TabIndex = 0;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Chức năng:";
-            // 
-            // btnReset
-            // 
-            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(158, 76);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(108, 28);
-            this.btnReset.TabIndex = 22;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(24, 76);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(108, 28);
-            this.btnXoa.TabIndex = 21;
-            this.btnXoa.Text = "Xóa đơn";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            // 
             // XuatHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -455,13 +459,13 @@
             this.panel2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
