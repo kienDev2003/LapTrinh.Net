@@ -61,6 +61,7 @@
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.txtTkMaDX = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnReset = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -95,6 +96,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnReset);
             this.groupBox3.Controls.Add(this.cboLoaiSP);
             this.groupBox3.Controls.Add(this.btnXuatDon);
             this.groupBox3.Controls.Add(this.txtSLSP);
@@ -128,12 +130,13 @@
             // btnXuatDon
             // 
             this.btnXuatDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXuatDon.Location = new System.Drawing.Point(109, 368);
+            this.btnXuatDon.Location = new System.Drawing.Point(24, 368);
             this.btnXuatDon.Name = "btnXuatDon";
             this.btnXuatDon.Size = new System.Drawing.Size(108, 28);
             this.btnXuatDon.TabIndex = 6;
             this.btnXuatDon.Text = "Xuất đơn";
             this.btnXuatDon.UseVisualStyleBackColor = true;
+            this.btnXuatDon.Click += new System.EventHandler(this.btnXuatDon_Click);
             // 
             // txtSLSP
             // 
@@ -271,6 +274,7 @@
             this.lsvDanhSach.TabIndex = 0;
             this.lsvDanhSach.UseCompatibleStateImageBehavior = false;
             this.lsvDanhSach.View = System.Windows.Forms.View.Details;
+            this.lsvDanhSach.SelectedIndexChanged += new System.EventHandler(this.lsvDanhSach_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -358,6 +362,7 @@
             this.btnTimKiem.TabIndex = 2;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // txtTkMaDX
             // 
@@ -376,6 +381,17 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Mã ĐX:";
             // 
+            // btnReset
+            // 
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Location = new System.Drawing.Point(158, 368);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(108, 28);
+            this.btnReset.TabIndex = 20;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // XuatHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -386,6 +402,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "XuatHang";
             this.Text = "XuatHang";
+            this.Load += new System.EventHandler(this.XuatHang_Load);
             this.groupBox1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -434,5 +451,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.Button btnReset;
     }
 }

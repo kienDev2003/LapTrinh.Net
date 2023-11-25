@@ -70,6 +70,7 @@ namespace Test
                             lvi.SubItems.Add(NgayCapNhat);
 
                             lsvDanhSach.Items.Add(lvi);
+                            txtTkMaSP.Text = "";
                         }
                         reader.Close();
                         DbConn.CloseConn();
@@ -79,6 +80,7 @@ namespace Test
                         reader.Close();
                         DbConn.CloseConn();
                         MessageBox.Show("Không tìm thấy sản phẩm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtTkMaSP.Text = "";
                         LoadList();
                     }
                 }
@@ -112,6 +114,7 @@ namespace Test
                             lvi.SubItems.Add(NgayCapNhat);
 
                             lsvDanhSach.Items.Add(lvi);
+                            txtTkTenSP.Text = "";
                         }
                         reader.Close();
                         DbConn.CloseConn();
@@ -121,6 +124,7 @@ namespace Test
                         reader.Close();
                         DbConn.CloseConn();
                         MessageBox.Show("Không tìm thấy sản phẩm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtTkTenSP.Text = "";
                         LoadList();
                     }
                 }
@@ -361,6 +365,30 @@ namespace Test
             }catch(Exception ex)
             {
                 MessageBox.Show("Lỗi: " + ex.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void lsvDanhSach_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(lsvDanhSach.SelectedItems.Count > 0)
+            {
+                ListViewItem lvi = lsvDanhSach.SelectedItems[0];
+
+                string MaSP = lvi.SubItems[0].Text;
+                string TenSP = lvi.SubItems[1].Text;
+                string Hang = lvi.SubItems[2].Text;
+                string MauSac = lvi.SubItems[3].Text;
+                string DungLuong = lvi.SubItems[4].Text;
+                string SoLuong = lvi.SubItems[5].Text;
+                string GiaBan = lvi.SubItems[6].Text;
+
+                txtMaSP.Text = MaSP;
+                txtTenSP.Text = TenSP;
+                txtHang.Text = Hang;
+                txtMauSac.Text = MauSac;
+                txtDungLuong.Text = DungLuong;
+                txtSoLuong.Text = SoLuong;
+                txtGiaBan.Text = GiaBan;
             }
         }
     }
