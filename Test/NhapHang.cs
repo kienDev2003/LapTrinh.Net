@@ -20,7 +20,7 @@ namespace Test
             InitializeComponent();
         }
 
-        private DataTable LoadDataToCbo(string columns,string table)
+        private DataTable LoadDataToCbo(string columns, string table)
         {
             try
             {
@@ -44,6 +44,21 @@ namespace Test
             cboLoaiSP.Text = "--Chọn SP--";
             cboTenNCC.Text = "--Chọn NCC--";
             txtSLSP.Text = "";
+        }
+
+        private bool KiemTraTrungMa(string MaDN)
+        {
+            DbConn.GetConn();
+            string query = $"SELECT * FROM tbl_NhapHang WHERE madonhang = N'{MaDN}'";
+            SqlDataReader reader = DbConn.Reader(query);
+            if (reader.HasRows)
+            {
+                reader.Close();
+                DbConn.CloseConn();
+                return true;
+            }
+            DbConn.CloseConn();
+            return false;
         }
 
         private void LoadList()
@@ -107,13 +122,13 @@ namespace Test
 
             cboLoaiSP.DataSource = dataCboLoaiSP;
             cboLoaiSP.DisplayMember = "tensanpham";
-            
+
             cboTenNCC.DataSource = dataCboNhaCC;
             cboTenNCC.DisplayMember = "tennhacungcap";
 
             cboTkTenNV.DataSource = dataCboTkTenNV;
             cboTkTenNV.DisplayMember = "tennhanvien";
-            
+
             cboTenNV.DataSource = dataCboTenNV;
             cboTenNV.DisplayMember = "tennhanvien";
 
@@ -134,18 +149,6 @@ namespace Test
                 string maDN = txtTkMaDN.Text.Trim();
                 string tenNV = cboTkTenNV.Text.Trim();
 
-                if (maDN == "" && tenNV == "--Chọn Tên NV--")
-                {
-                    MessageBox.Show("Mã ĐN hoặc Tên KH không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadList();
-                    return;
-                }
-                if (maDN != "" && tenNV != "--Chọn Tên NV--")
-                {
-                    MessageBox.Show("Vui lòng tìm theo Mã ĐX hoặc Tên KH !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadList();
-                    return;
-                }
                 if (maDN != "")
                 {
                     DbConn.GetConn();
@@ -180,7 +183,7 @@ namespace Test
                     {
                         reader.Close();
                         DbConn.CloseConn();
-                        MessageBox.Show("Không tìm thấy đơn nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show($"Không tìm thấy đơn nhập có mã {maDN} !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtTkMaDN.Text = "";
                         LoadList();
                     }
@@ -211,7 +214,6 @@ namespace Test
                             lvi.SubItems.Add(NgayCapNhat);
 
                             lsvDanhSach.Items.Add(lvi);
-                            cboTkTenNV.Text = "--Chọn Tên NV--";
                         }
                         reader.Close();
                         DbConn.CloseConn();
@@ -220,8 +222,7 @@ namespace Test
                     {
                         reader.Close();
                         DbConn.CloseConn();
-                        MessageBox.Show("Không tìm thấy đơn xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        cboTkTenNV.Text = "--Chọn Tên NV--";
+                        MessageBox.Show("Không tìm thấy đơn nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadList();
                     }
                 }
@@ -229,6 +230,175 @@ namespace Test
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi: " + ex.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnNhapHang_Click(object sender, EventArgs e)
+        {
+            string MaDN = txtMaDN.Text.Trim();
+            string TenNV = cboTenNV.Text.Trim();
+            string TenNCC = cboTenNCC.Text.Trim();
+            string LoaiSP = cboLoaiSP.Text.Trim();
+            string SLSP = txtSLSP.Text.Trim();
+            string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yyyy");
+
+            try
+            {
+                if (MaDN == "" || TenNV == "--Chọn Tên NV--" || TenNCC == "Chọn Tên NCC--" || LoaiSP == "--Chọn SP--" || SLSP == "")
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                if (KiemTraTrungMa(MaDN) == false)
+                {
+                    DbConn.GetConn();
+                    string query = $"INSERT INTO tbl_NhapHang (madonhang,tennhanvien,tennhacungcap,loaisanpham,soluongsanpham,ngaycapnhat)" +
+                                    $" VALUES (N'{MaDN}', N'{TenNV}', N'{TenNCC}', N'{LoaiSP}', N'{SLSP}', N'{NgayCapNhat}') ";
+                    int check = DbConn.Command(query);
+                    if (check > 0)
+                    {
+                        MessageBox.Show("Tạo đơn nhập hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DbConn.CloseConn();
+                        ResetTextBox();
+                        LoadList();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tạo đơn nhập hàng KHÔNG thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DbConn.CloseConn();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Mã đơn nhập bị trùng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            string MaDN = txtMaDN.Text.Trim();
+            string TenNV = cboTenNV.Text.Trim();
+            string TenNCC = cboTenNCC.Text.Trim();
+            string LoaiSP = cboLoaiSP.Text.Trim();
+            string SLSP = txtSLSP.Text.Trim();
+            string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yyyy");
+
+            try
+            {
+                if (MaDN == "" || TenNV == "--Chọn Tên NV--" || TenNCC == "Chọn Tên NCC--" || LoaiSP == "--Chọn SP--" || SLSP == "")
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                if (KiemTraTrungMa(MaDN) == true)
+                {
+                    DialogResult result = MessageBox.Show($"Bạn thật sự muốn sửa thông tin của đơn nhập có mã {MaDN}", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        DbConn.GetConn();
+                        string query = $"UPDATE tbl_NhapHang SET tennhanvien = N'{TenNV}', tennhacungcap = N'{TenNCC}'," +
+                                           $" loaisanpham = N'{LoaiSP}', soluongsanpham = N'{SLSP}'," +
+                                           $" ngaycapnhat = N'{NgayCapNhat}' WHERE madonhang = N'{MaDN}'";
+                        int check = DbConn.Command(query);
+                        if (check > 0)
+                        {
+                            MessageBox.Show("Sửa đơn nhập hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DbConn.CloseConn();
+                            ResetTextBox();
+                            LoadList();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sửa đơn nhập hàng KHÔNG thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DbConn.CloseConn();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Mã đơn nhập bị trùng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            string MaDN = txtMaDN.Text.Trim();
+
+            try
+            {
+                if (MaDN == "")
+                {
+                    MessageBox.Show("Mã ĐN không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                if (KiemTraTrungMa(MaDN) == true)
+                {
+                    DialogResult result = MessageBox.Show($"Bạn thật sự muốn xóa đơn nhập có mã {MaDN}", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        DbConn.GetConn();
+                        string query = $"DELETE FROM tbl_NhapHang WHERE madonhang = N'{MaDN}'";
+                        int check = DbConn.Command(query);
+                        if (check > 0)
+                        {
+                            MessageBox.Show("Xóa đơn nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadList();
+                            ResetTextBox();
+                            DbConn.CloseConn();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xóa đơn nhập KHÔNG thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadList();
+                            DbConn.CloseConn();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Mã đơn nhập không tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ResetTextBox();
+                    LoadList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            ResetTextBox();
+        }
+
+        private void lsvDanhSach_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lsvDanhSach.SelectedItems.Count > 0)
+            {
+                ListViewItem lvi = lsvDanhSach.SelectedItems[0];
+
+                string MaDN = lvi.SubItems[0].Text;
+                string TenNV = lvi.SubItems[1].Text;
+                string LoaiSP = lvi.SubItems[3].Text;
+                string TenNCC = lvi.SubItems[2].Text;
+                string SLSP = lvi.SubItems[4].Text;
+
+                txtMaDN.Text = MaDN;
+                cboTenNV.Text = TenNV;
+                cboLoaiSP.Text = LoaiSP;
+                cboTenNCC.Text = TenNCC;
+                txtSLSP.Text = SLSP;
             }
         }
     }

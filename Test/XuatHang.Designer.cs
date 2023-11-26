@@ -193,6 +193,7 @@
             // 
             // cboLoaiSP
             // 
+            this.cboLoaiSP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLoaiSP.FormattingEnabled = true;
             this.cboLoaiSP.Items.AddRange(new object[] {
             "--Chọn SP--"});

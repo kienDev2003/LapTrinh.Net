@@ -31,8 +31,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.txtAddr = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -50,11 +49,16 @@
             this.lsvDanhSach = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtTkTenNCC = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.txtTkMaNCC = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txtTenNCC = new System.Windows.Forms.TextBox();
+            this.txtTkTenNCC = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -92,8 +96,8 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.textBox1);
-            this.groupBox4.Controls.Add(this.txtAddr);
+            this.groupBox4.Controls.Add(this.txtTenNCC);
+            this.groupBox4.Controls.Add(this.txtEmail);
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.txtSDT);
             this.groupBox4.Controls.Add(this.label5);
@@ -109,19 +113,12 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Thông tin nhà cung cấp:";
             // 
-            // textBox1
+            // txtEmail
             // 
-            this.textBox1.Location = new System.Drawing.Point(109, 108);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(173, 23);
-            this.textBox1.TabIndex = 43;
-            // 
-            // txtAddr
-            // 
-            this.txtAddr.Location = new System.Drawing.Point(109, 252);
-            this.txtAddr.Name = "txtAddr";
-            this.txtAddr.Size = new System.Drawing.Size(173, 23);
-            this.txtAddr.TabIndex = 36;
+            this.txtEmail.Location = new System.Drawing.Point(109, 252);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(173, 23);
+            this.txtEmail.TabIndex = 36;
             // 
             // label8
             // 
@@ -240,6 +237,7 @@
             this.btnThem.TabIndex = 27;
             this.btnThem.Text = "Thêm NCC";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // panel2
             // 
@@ -264,6 +262,11 @@
             // 
             // lsvDanhSach
             // 
+            this.lsvDanhSach.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
             this.lsvDanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lsvDanhSach.FullRowSelect = true;
             this.lsvDanhSach.GridLines = true;
@@ -300,13 +303,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tìm kiếm:";
             // 
-            // txtTkTenNCC
-            // 
-            this.txtTkTenNCC.Location = new System.Drawing.Point(511, 22);
-            this.txtTkTenNCC.Name = "txtTkTenNCC";
-            this.txtTkTenNCC.Size = new System.Drawing.Size(173, 23);
-            this.txtTkTenNCC.TabIndex = 14;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -326,6 +322,7 @@
             this.btnTimKiem.TabIndex = 15;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // txtTkMaNCC
             // 
@@ -344,6 +341,40 @@
             this.label2.TabIndex = 16;
             this.label2.Text = "Mã NCC:";
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Mã NCC";
+            this.columnHeader1.Width = 126;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Tên NCC";
+            this.columnHeader2.Width = 229;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Số Điện Thoại";
+            this.columnHeader3.Width = 193;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Email";
+            this.columnHeader4.Width = 226;
+            // 
+            // txtTenNCC
+            // 
+            this.txtTenNCC.Location = new System.Drawing.Point(109, 108);
+            this.txtTenNCC.Name = "txtTenNCC";
+            this.txtTenNCC.Size = new System.Drawing.Size(173, 23);
+            this.txtTenNCC.TabIndex = 43;
+            // 
+            // txtTkTenNCC
+            // 
+            this.txtTkTenNCC.Location = new System.Drawing.Point(526, 22);
+            this.txtTkTenNCC.Name = "txtTkTenNCC";
+            this.txtTkTenNCC.Size = new System.Drawing.Size(173, 23);
+            this.txtTkTenNCC.TabIndex = 34;
+            // 
             // NhaCungCap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -354,6 +385,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "NhaCungCap";
             this.Text = "NhaCungCap";
+            this.Load += new System.EventHandler(this.NhaCungCap_Load);
             this.groupBox1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -375,7 +407,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txtTkTenNCC;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.TextBox txtTkMaNCC;
@@ -385,7 +416,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtAddr;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.Label label5;
@@ -397,6 +428,11 @@
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.ListView lsvDanhSach;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.TextBox txtTenNCC;
+        private System.Windows.Forms.TextBox txtTkTenNCC;
     }
 }

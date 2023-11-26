@@ -337,6 +337,7 @@ namespace Test
                         {
                             MessageBox.Show("Sửa đơn xuất hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             DbConn.CloseConn();
+                            ResetTextBox();
                             LoadList();
                         }
                         else
@@ -370,7 +371,7 @@ namespace Test
                 }
                 if (KiemTraTrungMa(MaDX) == true)
                 {
-                    DialogResult result = MessageBox.Show($"Bạn thật sự muốn xóa sản phẩm có mã {MaDX}", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show($"Bạn thật sự muốn xóa đơn xuất có mã {MaDX}", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         DbConn.GetConn();

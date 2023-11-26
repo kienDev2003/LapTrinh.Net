@@ -50,6 +50,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lsvDanhSach = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cboTkTenNV = new System.Windows.Forms.ComboBox();
@@ -57,12 +63,6 @@
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.txtTkMaDN = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -121,6 +121,7 @@
             // 
             // cboLoaiSP
             // 
+            this.cboLoaiSP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLoaiSP.FormattingEnabled = true;
             this.cboLoaiSP.Location = new System.Drawing.Point(125, 199);
             this.cboLoaiSP.Name = "cboLoaiSP";
@@ -129,6 +130,7 @@
             // 
             // cboTenNV
             // 
+            this.cboTenNV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTenNV.FormattingEnabled = true;
             this.cboTenNV.Location = new System.Drawing.Point(125, 84);
             this.cboTenNV.Name = "cboTenNV";
@@ -137,6 +139,7 @@
             // 
             // cboTenNCC
             // 
+            this.cboTenNCC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTenNCC.FormattingEnabled = true;
             this.cboTenNCC.Location = new System.Drawing.Point(125, 141);
             this.cboTenNCC.Name = "cboTenNCC";
@@ -240,6 +243,7 @@
             this.btnReset.TabIndex = 26;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnXoa
             // 
@@ -250,6 +254,7 @@
             this.btnXoa.TabIndex = 25;
             this.btnXoa.Text = "Xóa đơn";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -260,6 +265,7 @@
             this.btnSua.TabIndex = 24;
             this.btnSua.Text = "Sửa TT";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnNhapHang
             // 
@@ -270,6 +276,7 @@
             this.btnNhapHang.TabIndex = 23;
             this.btnNhapHang.Text = "Nhập hàng:";
             this.btnNhapHang.UseVisualStyleBackColor = true;
+            this.btnNhapHang.Click += new System.EventHandler(this.btnNhapHang_Click);
             // 
             // panel2
             // 
@@ -311,6 +318,37 @@
             this.lsvDanhSach.TabIndex = 0;
             this.lsvDanhSach.UseCompatibleStateImageBehavior = false;
             this.lsvDanhSach.View = System.Windows.Forms.View.Details;
+            this.lsvDanhSach.SelectedIndexChanged += new System.EventHandler(this.lsvDanhSach_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Mã ĐN";
+            this.columnHeader1.Width = 75;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Tên NV";
+            this.columnHeader2.Width = 167;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Tên NCC";
+            this.columnHeader3.Width = 161;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Loại SP";
+            this.columnHeader4.Width = 118;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Số Lượng SP";
+            this.columnHeader5.Width = 105;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Ngày Cập Nhật";
+            this.columnHeader6.Width = 139;
             // 
             // panel1
             // 
@@ -339,6 +377,7 @@
             // 
             // cboTkTenNV
             // 
+            this.cboTkTenNV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTkTenNV.FormattingEnabled = true;
             this.cboTkTenNV.Location = new System.Drawing.Point(512, 22);
             this.cboTkTenNV.Name = "cboTkTenNV";
@@ -382,36 +421,6 @@
             this.label2.Size = new System.Drawing.Size(55, 17);
             this.label2.TabIndex = 11;
             this.label2.Text = "Mã ĐN:";
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Mã ĐN";
-            this.columnHeader1.Width = 75;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Tên NV";
-            this.columnHeader2.Width = 167;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Tên NCC";
-            this.columnHeader3.Width = 161;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Loại SP";
-            this.columnHeader4.Width = 118;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Số Lượng SP";
-            this.columnHeader5.Width = 105;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Ngày Cập Nhật";
-            this.columnHeader6.Width = 139;
             // 
             // NhapHang
             // 
