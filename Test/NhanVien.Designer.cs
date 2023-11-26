@@ -31,6 +31,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtChucVu = new System.Windows.Forms.TextBox();
+            this.txtTenNV = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtMatKhau = new System.Windows.Forms.TextBox();
@@ -49,7 +51,6 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lsvDanhSach = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtTkTenNV = new System.Windows.Forms.TextBox();
@@ -57,8 +58,14 @@
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.txtTkMaNV = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtChucVu = new System.Windows.Forms.TextBox();
-            this.txtTenNV = new System.Windows.Forms.TextBox();
+            this.lsvDanhSach = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -117,9 +124,23 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Thông tin nhân viên:";
             // 
+            // txtChucVu
+            // 
+            this.txtChucVu.Location = new System.Drawing.Point(96, 111);
+            this.txtChucVu.Name = "txtChucVu";
+            this.txtChucVu.Size = new System.Drawing.Size(173, 23);
+            this.txtChucVu.TabIndex = 57;
+            // 
+            // txtTenNV
+            // 
+            this.txtTenNV.Location = new System.Drawing.Point(96, 66);
+            this.txtTenNV.Name = "txtTenNV";
+            this.txtTenNV.Size = new System.Drawing.Size(173, 23);
+            this.txtTenNV.TabIndex = 56;
+            // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(96, 247);
+            this.txtEmail.Location = new System.Drawing.Point(96, 246);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(173, 23);
             this.txtEmail.TabIndex = 49;
@@ -128,7 +149,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(7, 250);
+            this.label7.Location = new System.Drawing.Point(7, 249);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(46, 17);
             this.label7.TabIndex = 55;
@@ -153,7 +174,7 @@
             // 
             // txtTaiKhoan
             // 
-            this.txtTaiKhoan.Location = new System.Drawing.Point(96, 151);
+            this.txtTaiKhoan.Location = new System.Drawing.Point(96, 156);
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Size = new System.Drawing.Size(173, 23);
             this.txtTaiKhoan.TabIndex = 47;
@@ -162,7 +183,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(7, 154);
+            this.label5.Location = new System.Drawing.Point(7, 159);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 17);
             this.label5.TabIndex = 53;
@@ -172,7 +193,7 @@
             // 
             this.lb.AutoSize = true;
             this.lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb.Location = new System.Drawing.Point(7, 103);
+            this.lb.Location = new System.Drawing.Point(7, 114);
             this.lb.Name = "lb";
             this.lb.Size = new System.Drawing.Size(63, 17);
             this.lb.TabIndex = 52;
@@ -182,7 +203,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(7, 62);
+            this.label4.Location = new System.Drawing.Point(7, 69);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 17);
             this.label4.TabIndex = 51;
@@ -238,6 +259,7 @@
             this.btnReset.TabIndex = 34;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnXoa
             // 
@@ -248,6 +270,7 @@
             this.btnXoa.TabIndex = 33;
             this.btnXoa.Text = "Xóa NV";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -258,6 +281,7 @@
             this.btnSua.TabIndex = 32;
             this.btnSua.Text = "Sửa TT";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -268,6 +292,7 @@
             this.btnThem.TabIndex = 31;
             this.btnThem.Text = "Thêm NV";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // panel3
             // 
@@ -289,19 +314,6 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh sách nhân viên:";
-            // 
-            // lsvDanhSach
-            // 
-            this.lsvDanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lsvDanhSach.FullRowSelect = true;
-            this.lsvDanhSach.GridLines = true;
-            this.lsvDanhSach.HideSelection = false;
-            this.lsvDanhSach.Location = new System.Drawing.Point(3, 19);
-            this.lsvDanhSach.Name = "lsvDanhSach";
-            this.lsvDanhSach.Size = new System.Drawing.Size(806, 378);
-            this.lsvDanhSach.TabIndex = 0;
-            this.lsvDanhSach.UseCompatibleStateImageBehavior = false;
-            this.lsvDanhSach.View = System.Windows.Forms.View.Details;
             // 
             // panel1
             // 
@@ -354,6 +366,7 @@
             this.btnTimKiem.TabIndex = 20;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // txtTkMaNV
             // 
@@ -372,19 +385,62 @@
             this.label2.TabIndex = 21;
             this.label2.Text = "Mã NV:";
             // 
-            // txtChucVu
+            // lsvDanhSach
             // 
-            this.txtChucVu.Location = new System.Drawing.Point(96, 103);
-            this.txtChucVu.Name = "txtChucVu";
-            this.txtChucVu.Size = new System.Drawing.Size(173, 23);
-            this.txtChucVu.TabIndex = 57;
+            this.lsvDanhSach.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7});
+            this.lsvDanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lsvDanhSach.FullRowSelect = true;
+            this.lsvDanhSach.GridLines = true;
+            this.lsvDanhSach.HideSelection = false;
+            this.lsvDanhSach.Location = new System.Drawing.Point(3, 19);
+            this.lsvDanhSach.Name = "lsvDanhSach";
+            this.lsvDanhSach.Size = new System.Drawing.Size(806, 378);
+            this.lsvDanhSach.TabIndex = 0;
+            this.lsvDanhSach.UseCompatibleStateImageBehavior = false;
+            this.lsvDanhSach.View = System.Windows.Forms.View.Details;
+            this.lsvDanhSach.SelectedIndexChanged += new System.EventHandler(this.lsvDanhSach_SelectedIndexChanged);
             // 
-            // txtTenNV
+            // columnHeader1
             // 
-            this.txtTenNV.Location = new System.Drawing.Point(96, 62);
-            this.txtTenNV.Name = "txtTenNV";
-            this.txtTenNV.Size = new System.Drawing.Size(173, 23);
-            this.txtTenNV.TabIndex = 56;
+            this.columnHeader1.Text = "Mã NV";
+            this.columnHeader1.Width = 88;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Tên NV";
+            this.columnHeader2.Width = 147;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Chức vụ";
+            this.columnHeader3.Width = 85;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Tài khoản";
+            this.columnHeader4.Width = 119;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Mật khẩu";
+            this.columnHeader5.Width = 118;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Email";
+            this.columnHeader6.Width = 120;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Ngày cập nhật";
+            this.columnHeader7.Width = 119;
             // 
             // NhanVien
             // 
@@ -396,6 +452,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "NhanVien";
             this.Text = "NhanVien";
+            this.Load += new System.EventHandler(this.NhanVien_Load);
             this.groupBox1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -441,8 +498,15 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.ListView lsvDanhSach;
         private System.Windows.Forms.TextBox txtChucVu;
         private System.Windows.Forms.TextBox txtTenNV;
+        private System.Windows.Forms.ListView lsvDanhSach;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
     }
 }

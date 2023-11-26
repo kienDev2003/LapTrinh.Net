@@ -240,7 +240,7 @@ namespace Test
             string TenNCC = cboTenNCC.Text.Trim();
             string LoaiSP = cboLoaiSP.Text.Trim();
             string SLSP = txtSLSP.Text.Trim();
-            string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yyyy");
+            string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yy");
 
             try
             {
@@ -286,7 +286,7 @@ namespace Test
             string TenNCC = cboTenNCC.Text.Trim();
             string LoaiSP = cboLoaiSP.Text.Trim();
             string SLSP = txtSLSP.Text.Trim();
-            string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yyyy");
+            string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yy");
 
             try
             {

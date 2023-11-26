@@ -208,7 +208,7 @@ namespace Test
                 string TenNCC = txtTenNCC.Text.Trim();
                 string SĐT = txtSDT.Text.Trim();
                 string Email = txtEmail.Text.Trim();
-                string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yyyy");
+                string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yy");
 
                 if (MaNCC == "" || TenNCC == "" || SĐT == "" || Email == "" )
                 {
@@ -243,6 +243,126 @@ namespace Test
             {
                 MessageBox.Show("Lỗi: " + ex.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            string MaNCC = txtMaNCC.Text.Trim();
+            string TenNCC = txtTenNCC.Text.Trim();
+            string SĐT = txtSDT.Text.Trim();
+            string Email = txtEmail.Text.Trim();
+            string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yy");
+            try
+            {
+                if (MaNCC == "" || TenNCC == "" || SĐT == "" || Email == "")
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                if (KiemTraTrungMa(MaNCC) == true)
+                {
+                    DialogResult result = MessageBox.Show($"Bạn thật sự muốn sửa thông tin của NCC có mã {MaNCC}", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        DbConn.GetConn();
+                        string query = $"UPDATE tbl_NCC SET tennhacungcap = N'{TenNCC}', sodienthoai = N'{SĐT}'," +
+                                       $" email = N'{Email}', ngaycapnhat = N'{NgayCapNhat}' WHERE manhacungcap = N'{MaNCC}'";
+
+                        int check = DbConn.Command(query);
+                        if (check > 0)
+                        {
+                            MessageBox.Show("Sửa thông tin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ResetTextBox();
+                            LoadList();
+                            DbConn.CloseConn();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sửa thông tin KHÔNG thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadList();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Mã NCC không tồn tại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void lsvDanhSach_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lsvDanhSach.SelectedItems.Count > 0)
+            {
+                ListViewItem lvi = lsvDanhSach.SelectedItems[0];
+
+                string MaNCC = lvi.SubItems[0].Text;
+                string TenNCC = lvi.SubItems[1].Text;
+                string SĐT = lvi.SubItems[2].Text;
+                string Email = lvi.SubItems[3].Text;
+                
+                txtMaNCC.Text = MaNCC;
+                txtTenNCC.Text = TenNCC;
+                txtSDT.Text = SĐT;
+                txtEmail.Text = Email;
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            string MaNCC = txtMaNCC.Text.Trim();
+
+            try
+            {
+                if (MaNCC == "")
+                {
+                    MessageBox.Show("Mã NCC không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                if (KiemTraTrungMa(MaNCC) == true)
+                {
+                    DialogResult result = MessageBox.Show($"Bạn thật sự muốn xóa NCC có mã {MaNCC}", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        DbConn.GetConn();
+                        string query = $"DELETE FROM tbl_NCC WHERE manhacungcap = N'{MaNCC}'";
+                        int check = DbConn.Command(query);
+                        if (check > 0)
+                        {
+                            MessageBox.Show("Xóa NCC thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadList();
+                            ResetTextBox();
+                            DbConn.CloseConn();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xóa NCC KHÔNG thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadList();
+                            DbConn.CloseConn();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Mã NCC không tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ResetTextBox();
+                    LoadList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            ResetTextBox();
         }
     }
 }

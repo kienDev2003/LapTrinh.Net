@@ -233,7 +233,7 @@ namespace Test
                 string DungLuong = txtDungLuong.Text.Trim();
                 string SoLuong = txtSoLuong.Text.Trim();
                 string GiaBan = txtGiaBan.Text.Trim();
-                string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yyyy");
+                string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yy");
 
                 if (MaSP == "" || TenSP == "" || Hang == "" || MauSac == "" || DungLuong == "" || GiaBan == "")
                 {
@@ -330,7 +330,7 @@ namespace Test
             string DungLuong = txtDungLuong.Text.Trim();
             string SoLuong = txtSoLuong.Text.Trim();
             string GiaBan = txtGiaBan.Text.Trim();
-            string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yyyy");
+            string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yy");
             try
             {
                 if (MaSP == "" || TenSP == "" || Hang == "" || MauSac == "" || DungLuong == "" || GiaBan == "")

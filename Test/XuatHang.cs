@@ -270,7 +270,7 @@ namespace Test
                 string SĐT = txtSDT.Text.Trim();
                 string DiaChi = txtAddr.Text.Trim();
                 string SLSP = txtSLSP.Text.Trim();
-                string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yyyy");
+                string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yy");
 
                 if (MaDX == "" || TenKH == "" || LoaiSP == "" || SĐT == "" || DiaChi == "" || SLSP == "")
                 {
@@ -314,7 +314,7 @@ namespace Test
             string SĐT = txtSDT.Text.Trim();
             string DiaChi = txtAddr.Text.Trim();
             string SLSP = txtSLSP.Text.Trim();
-            string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yyyy");
+            string NgayCapNhat = DateTime.Now.ToString("hh:mm-dd/MM/yy");
 
             try
             {
